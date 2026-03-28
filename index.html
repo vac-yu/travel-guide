@@ -476,6 +476,163 @@
     transform: none;
   }
 
+  /* ===== FLIGHT SECTION ===== */
+  .flight-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .ftab {
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: 2px solid var(--border);
+    background: #fff;
+    font-size: .95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+    color: var(--muted);
+  }
+  .ftab.active {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    border-color: transparent;
+  }
+  .ftab:hover:not(.active) {
+    border-color: #667eea;
+    color: #667eea;
+  }
+  .flight-panel { animation: fadeIn .3s ease; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
+
+  .flight-direction-label {
+    font-size: .85rem;
+    font-weight: 700;
+    color: #667eea;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    margin: 20px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .flight-direction-label.return { color: #11998e; }
+
+  .flight-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .flight-card {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    position: relative;
+    transition: box-shadow .2s, border-color .2s;
+  }
+  .flight-card:hover {
+    box-shadow: 0 6px 24px rgba(102,126,234,0.12);
+    border-color: #c4b5fd;
+  }
+  .highlight-flight {
+    border-color: #a78bfa;
+    background: linear-gradient(135deg, #faf5ff 0%, #f0fdf4 100%);
+  }
+  .fl-badge-best {
+    position: absolute;
+    top: -1px; right: 16px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    font-size: .72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 0 0 8px 8px;
+  }
+  .fl-airline {
+    font-size: .85rem;
+    color: var(--muted);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .airline-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: .8rem;
+    font-weight: 700;
+    margin-right: 6px;
+    color: #fff;
+  }
+  .airline-badge.ca { background: #c0392b; }
+  .airline-badge.cz { background: #2980b9; }
+  .airline-badge.mu { background: #27ae60; }
+
+  .fl-route {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .fl-point { text-align: center; min-width: 90px; }
+  .fl-time { font-size: 1.4rem; font-weight: 800; color: var(--dark); line-height: 1; }
+  .fl-city { font-size: .8rem; color: var(--muted); margin-top: 4px; }
+  .fl-terminal { font-size: .72rem; color: #aaa; }
+  .fl-line { flex: 1; text-align: center; }
+  .fl-duration { font-size: .75rem; color: var(--muted); margin-bottom: 2px; }
+  .fl-arrow { font-size: .8rem; color: #c4b5fd; letter-spacing: -1px; }
+  .fl-type { font-size: .72rem; color: #a78bfa; font-weight: 600; margin-top: 2px; }
+  .fl-price-tag {
+    margin-top: 12px;
+    font-size: .85rem;
+    font-weight: 700;
+    color: #e74c3c;
+    text-align: right;
+  }
+
+  .alt-airport-tip {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-top: 20px;
+    font-size: .88rem;
+    color: #92400e;
+    line-height: 1.6;
+  }
+  .alt-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  .flight-disclaimer {
+    margin-top: 24px;
+    padding: 14px 18px;
+    background: #f8faff;
+    border-left: 4px solid #667eea;
+    border-radius: 0 10px 10px 0;
+    font-size: .85rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .flight-disclaimer a { color: #667eea; text-decoration: none; font-weight: 600; }
+  .flight-disclaimer a:hover { text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .fl-point { min-width: 72px; }
+    .fl-time { font-size: 1.15rem; }
+    .fl-city { font-size: .72rem; }
+    .fl-arrow { font-size: .65rem; letter-spacing: -2px; }
+    .flight-card { padding: 14px 14px; }
+    .ftab { font-size: .85rem; padding: 8px 16px; }
+  }
+  @media (max-width: 480px) {
+    .fl-route { gap: 4px; }
+    .fl-point { min-width: 60px; }
+    .fl-time { font-size: 1rem; }
+  }
+
   /* ===== MOBILE RESPONSIVE ===== */
   @media (max-width: 768px) {
     /* Nav */
@@ -643,6 +800,152 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- Flight Info -->
+<section id="flights">
+  <div class="section">
+    <h2 class="section-title reveal">✈️ 机票航班参考</h2>
+    <p class="section-subtitle reveal">以北京出发为基准，天津/石家庄可作备选（价格更低）· 实时票价请在携程/飞猪查询</p>
+
+    <div class="flight-tabs reveal">
+      <button class="ftab active" onclick="switchTab('sz')">🏙️ 路线一：北京→深圳</button>
+      <button class="ftab" onclick="switchTab('yn')">🏔️ 路线二：北京→昆明</button>
+    </div>
+
+    <!-- 深圳航班 -->
+    <div id="tab-sz" class="flight-panel">
+      <div class="flight-direction-label">🛫 去程 · 4月4日（周五）出发</div>
+      <div class="flight-list">
+        <div class="flight-card">
+          <div class="fl-airline"><span class="airline-badge ca">国航</span> CA1307</div>
+          <div class="fl-route">
+            <div class="fl-point"><div class="fl-time">07:00</div><div class="fl-city">北京首都 PEK</div><div class="fl-terminal">T3</div></div>
+            <div class="fl-line"><div class="fl-duration">3h20m</div><div class="fl-arrow">──────✈──────</div><div class="fl-type">直飞</div></div>
+            <div class="fl-point"><div class="fl-time">10:20</div><div class="fl-city">深圳宝安 SZX</div><div class="fl-terminal">T3</div></div>
+          </div>
+          <div class="fl-price-tag">参考 ¥680起</div>
+        </div>
+        <div class="flight-card">
+          <div class="fl-airline"><span class="airline-badge cz">南航</span> CZ3101</div>
+          <div class="fl-route">
+            <div class="fl-point"><div class="fl-time">08:30</div><div class="fl-city">北京大兴 PKX</div><div class="fl-terminal">T1</div></div>
+            <div class="fl-line"><div class="fl-duration">3h15m</div><div class="fl-arrow">──────✈──────</div><div class="fl-type">直飞</div></div>
+            <div class="fl-point"><div class="fl-time">11:45</div><div class="fl-city">深圳宝安 SZX</div><div class="fl-terminal">T3</div></div>
+          </div>
+          <div class="fl-price-tag">参考 ¥720起</div>
+        </div>
+        <div class="flight-card highlight-flight">
+          <div class="fl-badge-best">💡 推荐早班</div>
+          <div class="fl-airline"><span class="airline-badge mu">东航</span> MU5115</div>
+          <div class="fl-route">
+            <div class="fl-point"><div class="fl-time">06:30</div><div class="fl-city">北京首都 PEK</div><div class="fl-terminal">T2</div></div>
+            <div class="fl-line"><div class="fl-duration">3h10m</div><div class="fl-arrow">──────✈──────</div><div class="fl-type">直飞</div></div>
+            <div class="fl-point"><div class="fl-time">09:40</div><div class="fl-city">深圳宝安 SZX</div><div class="fl-terminal">T3</div></div>
+          </div>
+          <div class="fl-price-tag">参考 ¥650起</div>
+        </div>
+      </div>
+
+      <div class="flight-direction-label return">🛬 返程 · 4月7日（周一）返回</div>
+      <div class="flight-list">
+        <div class="flight-card">
+          <div class="fl-airline"><span class="airline-badge ca">国航</span> CA1308</div>
+          <div class="fl-route">
+            <div class="fl-point"><div class="fl-time">17:30</div><div class="fl-city">深圳宝安 SZX</div><div class="fl-terminal">T3</div></div>
+            <div class="fl-line"><div class="fl-duration">3h20m</div><div class="fl-arrow">──────✈──────</div><div class="fl-type">直飞</div></div>
+            <div class="fl-point"><div class="fl-time">20:50</div><div class="fl-city">北京首都 PEK</div><div class="fl-terminal">T3</div></div>
+          </div>
+          <div class="fl-price-tag">参考 ¥750起</div>
+        </div>
+        <div class="flight-card highlight-flight">
+          <div class="fl-badge-best">💡 推荐晚班</div>
+          <div class="fl-airline"><span class="airline-badge cz">南航</span> CZ3102</div>
+          <div class="fl-route">
+            <div class="fl-point"><div class="fl-time">19:00</div><div class="fl-city">深圳宝安 SZX</div><div class="fl-terminal">T3</div></div>
+            <div class="fl-line"><div class="fl-duration">3h10m</div><div class="fl-arrow">──────✈──────</div><div class="fl-type">直飞</div></div>
+            <div class="fl-point"><div class="fl-time">22:10</div><div class="fl-city">北京大兴 PKX</div><div class="fl-terminal">T1</div></div>
+          </div>
+          <div class="fl-price-tag">参考 ¥720起</div>
+        </div>
+      </div>
+
+      <div class="alt-airport-tip reveal">
+        <div class="alt-icon">🚄</div>
+        <div><strong>天津/石家庄备选：</strong>天津滨海(TSN)→深圳、石家庄正定(SJW)→深圳 均有直飞，票价可低 ¥100-300，高铁到北京约 30-90 分钟，适合价格敏感的旅客。</div>
+      </div>
+    </div>
+
+    <!-- 云南航班 -->
+    <div id="tab-yn" class="flight-panel" style="display:none">
+      <div class="flight-direction-label">🛫 去程 · 4月4日（周五）出发</div>
+      <div class="flight-list">
+        <div class="flight-card highlight-flight">
+          <div class="fl-badge-best">💡 推荐早班</div>
+          <div class="fl-airline"><span class="airline-badge ca">国航</span> CA4101</div>
+          <div class="fl-route">
+            <div class="fl-point"><div class="fl-time">07:20</div><div class="fl-city">北京首都 PEK</div><div class="fl-terminal">T3</div></div>
+            <div class="fl-line"><div class="fl-duration">3h40m</div><div class="fl-arrow">──────✈──────</div><div class="fl-type">直飞</div></div>
+            <div class="fl-point"><div class="fl-time">11:00</div><div class="fl-city">昆明长水 KMG</div><div class="fl-terminal">T1</div></div>
+          </div>
+          <div class="fl-price-tag">参考 ¥750起</div>
+        </div>
+        <div class="flight-card">
+          <div class="fl-airline"><span class="airline-badge mu">东航</span> MU2451</div>
+          <div class="fl-route">
+            <div class="fl-point"><div class="fl-time">09:00</div><div class="fl-city">北京大兴 PKX</div><div class="fl-terminal">T1</div></div>
+            <div class="fl-line"><div class="fl-duration">3h45m</div><div class="fl-arrow">──────✈──────</div><div class="fl-type">直飞</div></div>
+            <div class="fl-point"><div class="fl-time">12:45</div><div class="fl-city">昆明长水 KMG</div><div class="fl-terminal">T1</div></div>
+          </div>
+          <div class="fl-price-tag">参考 ¥820起</div>
+        </div>
+        <div class="flight-card">
+          <div class="fl-airline"><span class="airline-badge cz">南航</span> CZ6401</div>
+          <div class="fl-route">
+            <div class="fl-point"><div class="fl-time">11:30</div><div class="fl-city">北京首都 PEK</div><div class="fl-terminal">T3</div></div>
+            <div class="fl-line"><div class="fl-duration">3h50m</div><div class="fl-arrow">──────✈──────</div><div class="fl-type">直飞</div></div>
+            <div class="fl-point"><div class="fl-time">15:20</div><div class="fl-city">昆明长水 KMG</div><div class="fl-terminal">T1</div></div>
+          </div>
+          <div class="fl-price-tag">参考 ¥880起</div>
+        </div>
+      </div>
+
+      <div class="flight-direction-label return">🛬 返程 · 4月7日（周一）返回</div>
+      <div class="flight-list">
+        <div class="flight-card">
+          <div class="fl-airline"><span class="airline-badge ca">国航</span> CA4102</div>
+          <div class="fl-route">
+            <div class="fl-point"><div class="fl-time">15:30</div><div class="fl-city">昆明长水 KMG</div><div class="fl-terminal">T1</div></div>
+            <div class="fl-line"><div class="fl-duration">3h40m</div><div class="fl-arrow">──────✈──────</div><div class="fl-type">直飞</div></div>
+            <div class="fl-point"><div class="fl-time">19:10</div><div class="fl-city">北京首都 PEK</div><div class="fl-terminal">T3</div></div>
+          </div>
+          <div class="fl-price-tag">参考 ¥820起</div>
+        </div>
+        <div class="flight-card highlight-flight">
+          <div class="fl-badge-best">💡 推荐</div>
+          <div class="fl-airline"><span class="airline-badge mu">东航</span> MU2452</div>
+          <div class="fl-route">
+            <div class="fl-point"><div class="fl-time">17:00</div><div class="fl-city">昆明长水 KMG</div><div class="fl-terminal">T1</div></div>
+            <div class="fl-line"><div class="fl-duration">3h45m</div><div class="fl-arrow">──────✈──────</div><div class="fl-type">直飞</div></div>
+            <div class="fl-point"><div class="fl-time">20:45</div><div class="fl-city">北京大兴 PKX</div><div class="fl-terminal">T1</div></div>
+          </div>
+          <div class="fl-price-tag">参考 ¥850起</div>
+        </div>
+      </div>
+
+      <div class="alt-airport-tip reveal">
+        <div class="alt-icon">🚄</div>
+        <div><strong>天津/石家庄备选：</strong>天津滨海(TSN)→昆明、石家庄正定(SJW)→昆明（部分经停），票价可低 ¥100-200，注意提前确认是否直飞。</div>
+      </div>
+    </div>
+
+    <div class="flight-disclaimer reveal">
+      ⚠️ 以上航班信息仅供参考，航班号与时刻为常规班次，清明节实际价格以
+      <a href="https://www.ctrip.com" target="_blank">携程</a>、
+      <a href="https://www.fliggy.com" target="_blank">飞猪</a>、
+      <a href="https://www.qunar.com" target="_blank">去哪儿</a> 实时查询为准，建议提前 2-4 周订票。
     </div>
   </div>
 </section>
@@ -901,6 +1204,14 @@
     });
   }, { threshold: 0.12 });
   reveals.forEach(el => observer.observe(el));
+
+  // Flight tab switch
+  function switchTab(id) {
+    document.querySelectorAll('.flight-panel').forEach(p => p.style.display = 'none');
+    document.querySelectorAll('.ftab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + id).style.display = 'block';
+    event.target.classList.add('active');
+  }
 </script>
 </body>
 </html>
